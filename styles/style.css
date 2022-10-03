@@ -1,0 +1,12 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sketch-container {
+    width: 640px;
+    background-color: antiquewhite;
+    display: flex;
+    flex-wrap: wrap;
+}
