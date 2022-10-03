@@ -65,3 +65,14 @@ btnColors.forEach(btn => {btn.addEventListener('click', () => {
     
 });
 
+
+function resetSketch (){
+    const pixels = document.querySelectorAll('.sketch-container div')
+    for (const pixel of pixels) {
+        //pixel.style.backgroundColor = 'transparent'
+        pixel.style.removeProperty("background-color")
+    }
+}
+
+const reset = document.querySelector('#reset').addEventListener('click', () => resetSketch())
+
