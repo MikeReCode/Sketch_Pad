@@ -20,7 +20,12 @@ function createTable (nrBlocks = 16 * 16, dimension = 640 / 16) {
         })
         div.addEventListener('mousemove', () => {
             if (draw) {
-                div.style.backgroundColor = color
+                if (color == 'rainbow') {
+                    div.style.backgroundColor = randomRGB()
+                }else{
+                    div.style.backgroundColor = color
+                }
+                
             } 
         })
         frame.appendChild(div)
@@ -39,9 +44,23 @@ btnSizes.forEach(btn => {btn.addEventListener('click', () => {
     
 });
 
+// Returns an integer random number between min (included) and max (included)
+function randomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+function randomRGB(){
+    return `rgb(${randomInteger(0, 250)}, ${randomInteger(0, 250)}, ${randomInteger(0, 250)})`
+}
+
 // change drawing color by clicking on the buttons 
 btnColors.forEach(btn => {btn.addEventListener('click', () => {
-    color = btn.id
+    if (btn.id == 'random') {
+        color = randomRGB()
+    }else{
+        color = btn.id;
+    }
+    
 })
     
 });
