@@ -74,5 +74,15 @@ function resetSketch (){
     }
 }
 
-const reset = document.querySelector('#reset').addEventListener('click', () => resetSketch())
+// Reset btn
+document.querySelector('#reset').addEventListener('click', () => resetSketch())
+
+
+ 
+function getRgbFromPicker () {
+    return document.querySelector("#selector").getAttribute('data-current-color')
+}
+
+// color picker
+document.querySelector('#selector').addEventListener('change', () => { color = getRgbFromPicker()})
 
