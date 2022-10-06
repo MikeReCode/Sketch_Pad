@@ -84,5 +84,21 @@ function getRgbFromPicker () {
 }
 
 // color picker
-document.querySelector('#selector').addEventListener('change', () => { color = getRgbFromPicker()})
+let observer;
+console.log(observer);
+document.querySelector('#selector').addEventListener('click', () => { 
+
+    const observer = new MutationObserver(() => {
+        color = getRgbFromPicker();
+        console.log(color);
+    });
+    
+    const target = document.getElementById('selector');
+    observer.observe(target, { attributes : true, attributeFilter : ['style'] });
+
+
+}, {once:true})
+
+
+
 
