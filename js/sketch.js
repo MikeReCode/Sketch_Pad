@@ -5,10 +5,10 @@ let color = 'red'
 let draw = false;
 
 
-console.log(btnSizes[0].id);
-
 function createTable (nrBlocks = 16 * 16, dimension = 640 / 16) {
+    // clear div before create a new empty sketch
     document.querySelector('.sketch-container').innerHTML = '';
+
     for (let index = 0; index < nrBlocks; index++) {
         const div = document.createElement('div')
         div.style.cssText = `width: ${dimension}px; height: ${dimension}px; `
@@ -32,6 +32,7 @@ function createTable (nrBlocks = 16 * 16, dimension = 640 / 16) {
     }
 }
 
+// create empty sketch
 createTable()
 
 // Create a new Sketch table with size selected 
@@ -56,15 +57,16 @@ function randomRGB(){
 // change drawing color by clicking on the buttons 
 btnColors.forEach(btn => {btn.addEventListener('click', () => {
     if (btn.id == 'random') {
-        color = randomRGB()
-    }else{
+        color = randomRGB();
+    }else if (btn.id == 'eraser'){
+        color = 'antiquewhite';
+    } else{
         color = btn.id;
     }
     
 })
     
 });
-
 
 function resetSketch (){
     const pixels = document.querySelectorAll('.sketch-container div')
@@ -84,8 +86,6 @@ function getRgbFromPicker () {
 }
 
 // color picker
-let observer;
-console.log(observer);
 document.querySelector('#selector').addEventListener('click', () => { 
 
     const observer = new MutationObserver(() => {
@@ -95,7 +95,6 @@ document.querySelector('#selector').addEventListener('click', () => {
     
     const target = document.getElementById('selector');
     observer.observe(target, { attributes : true, attributeFilter : ['style'] });
-
 
 }, {once:true})
 
