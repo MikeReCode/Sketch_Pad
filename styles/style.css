@@ -116,7 +116,7 @@ a:link, a:visited, a:hover, a:active {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 135px;
+  width: 150px;
 }
 
 #rainbow:before {
